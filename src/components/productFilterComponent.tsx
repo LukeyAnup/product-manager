@@ -2,6 +2,8 @@ import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import { IoIosSettings, IoMdClose } from "react-icons/io";
 import { usePriceFilterStore } from "../store";
+import ButtonComponent from "./reusable/button";
+import InputComponent from "./reusable/input";
 
 export default function ProductFilterComponent() {
   const {
@@ -20,34 +22,55 @@ export default function ProductFilterComponent() {
   return (
     <div>
       <div className="hidden md:flex md:flex-col rounded-xl shadow-lg md:my-16 mx-2 px-3 py-8 bg-blue-50 space-y-6">
-        <div
-          onClick={resetPrices}
-          className="flex justify-end underline cursor-pointer"
-        >
-          Reset
+        <div className="flex justify-end">
+          <ButtonComponent
+            onClick={resetPrices}
+            variant="text"
+            text="Reset"
+            sx={{
+              cursor: "pointer",
+            }}
+          />
         </div>
+
         <div className="text-2xl">Product Filters</div>
         <div>
           <h3 className="font-semibold mb-2">Price Range</h3>
           <div className="flex gap-2">
-            <input
-              min={0}
+            <InputComponent
+              name="minimum"
               type="number"
               placeholder="Min"
+              data-testid="minimum"
               value={minPrice ?? ""}
-              className="w-1/2 border border-gray-600 rounded-md p-2"
+              slotProps={{
+                input: {
+                  inputProps: {
+                    min: 0,
+                    step: 1,
+                  },
+                },
+              }}
               onChange={(e) => {
                 const value = e.target.value;
                 setMinPrice(value);
               }}
             />
 
-            <input
-              min={0}
+            <InputComponent
+              name="maximum"
               type="number"
               placeholder="Max"
+              data-testid="maximum"
               value={maxPrice ?? ""}
-              className="w-1/2 border border-gray-600 rounded-md p-2"
+              slotProps={{
+                input: {
+                  inputProps: {
+                    min: 0,
+                    step: 1,
+                  },
+                },
+              }}
               onChange={(e) => {
                 const value = e.target.value;
                 setMaxPrice(value);
@@ -87,34 +110,52 @@ export default function ProductFilterComponent() {
               </div>
             </div>
 
-            <div
-              onClick={resetPrices}
-              className="flex justify-end underline cursor-pointer pt-4"
-            >
-              Reset
+            <div className="flex justify-end">
+              <ButtonComponent
+                onClick={resetPrices}
+                variant="text"
+                text="Reset"
+                sx={{
+                  cursor: "pointer",
+                }}
+              />
             </div>
             <div className="flex flex-col gap-4 mt-2">
               <div>
                 <h3 className="font-semibold mb-2">Price Range</h3>
                 <div className="flex gap-2">
-                  <input
-                    min={0}
+                  <InputComponent
+                    name="minimum"
                     type="number"
                     placeholder="Min"
                     value={minPrice ?? ""}
-                    className="w-1/2 border rounded-md p-2"
+                    slotProps={{
+                      input: {
+                        inputProps: {
+                          min: 0,
+                          step: 1,
+                        },
+                      },
+                    }}
                     onChange={(e) => {
                       const value = e.target.value;
                       setMinPrice(value);
                     }}
                   />
 
-                  <input
-                    min={0}
+                  <InputComponent
+                    name="maximum"
                     type="number"
                     placeholder="Max"
                     value={maxPrice ?? ""}
-                    className="w-1/2 border rounded-md p-2"
+                    slotProps={{
+                      input: {
+                        inputProps: {
+                          min: 0,
+                          step: 1,
+                        },
+                      },
+                    }}
                     onChange={(e) => {
                       const value = e.target.value;
                       setMaxPrice(value);

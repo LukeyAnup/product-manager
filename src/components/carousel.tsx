@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ButtonIcon from "./reusable/buttonIcon";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 interface CarouselProps {
   images: string[];
@@ -52,49 +54,41 @@ export default function Carousel({ images, className = "" }: CarouselProps) {
       </div>
 
       {/* Prev/Next Buttons */}
-      <button
+      <ButtonIcon
         type="button"
-        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
         onClick={prevSlide}
+        sx={{
+          position: "absolute",
+          top: 85,
+          left: 0,
+          zIndex: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-white/50">
-          <svg
-            className="w-5 h-5 text-black"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
+          <FaAngleLeft />
         </span>
-      </button>
+      </ButtonIcon>
 
-      <button
-        type="button"
-        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer"
+      <ButtonIcon
         onClick={nextSlide}
+        type="button"
+        sx={{
+          position: "absolute",
+          top: 85,
+          right: 0,
+          zIndex: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-white/50">
-          <svg
-            className="w-5 h-5 text-black"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          <FaAngleRight />
         </span>
-      </button>
+      </ButtonIcon>
     </div>
   );
 }

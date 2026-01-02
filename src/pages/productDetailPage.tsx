@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchProductById } from "../api/products";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,6 +7,7 @@ import type { Product } from "../types/product";
 import Loader from "../components/loader";
 import ProductImages from "../components/productImages";
 import { BiLeftArrow } from "react-icons/bi";
+import ButtonComponent from "../components/reusable/button";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -59,13 +59,11 @@ export default function ProductDetailPage() {
           <p className="text-red-600 text-xl mb-6">
             {error || "Product not found"}
           </p>
-          <Button
-            size="large"
-            variant="outlined"
+          <ButtonComponent
             onClick={() => goToProductsPage()}
-          >
-            Back to Products
-          </Button>
+            size="large"
+            text="Back to Products"
+          />
         </div>
       </div>
     );
@@ -73,13 +71,14 @@ export default function ProductDetailPage() {
 
   return (
     <div>
-      <button
-        onClick={() => goToProductsPage()}
-        className="flex items-center gap-2 text-gray-600 hover:text-blue-600 md:mx-20 mx-3 mb-8 transition-colors"
-      >
+      <div className="flex items-center hover:text-blue-600 md:mx-20 mx-3 mb-8">
         <BiLeftArrow className="h-5 w-5" />
-        Back to Products
-      </button>
+        <ButtonComponent
+          onClick={() => goToProductsPage()}
+          variant="text"
+          text="Back to Products"
+        />
+      </div>
 
       <div className="md:flex gap-8">
         <div>

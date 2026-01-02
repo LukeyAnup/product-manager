@@ -8,6 +8,7 @@ import SearchBar from "../components/searchBar";
 import ProductCard from "../components/productCard";
 import ProductFilterComponent from "../components/productFilterComponent";
 import Pagination from "../components/pagination";
+import ButtonComponent from "../components/reusable/button";
 
 export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ export default function ProductsPage() {
         setProducts(data);
         setError(null);
       } catch (err) {
-        setError("Failed to load products. Please try again later.");
+        setError("Failed to load products. Please try again .");
         console.error("Error fetching products:", err);
       } finally {
         setLoading(false);
@@ -82,14 +83,11 @@ export default function ProductsPage() {
         <div className="text-center">
           <div className="flex my-4">
             <p className="text-red-600 text-lg mb-4">{error}</p>
-            <p>Error while fetching products. Please try again</p>
           </div>
-          <button
+          <ButtonComponent
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Retry
-          </button>
+            text="Retry"
+          />
         </div>
       </div>
     );

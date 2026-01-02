@@ -1,4 +1,8 @@
-const URL = "https://dummyjson.com/products";
+const URL = import.meta.env.VITE_PRODUCTS_API;
+
+if (!URL) {
+  throw new Error("Products API URL is not defined");
+}
 
 export const fetchProducts = async () => {
   const response = await fetch(URL);

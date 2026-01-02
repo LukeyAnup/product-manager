@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import ButtonIcon from "./reusable/buttonIcon";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,16 +37,13 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700 hover:text-blue-600"
-            >
+            <ButtonIcon onClick={toggleMenu}>
               {isOpen ? (
                 <RxCross1 className="h-6 w-6" />
               ) : (
                 <IoIosMenu className="h-6 w-6" />
               )}
-            </button>
+            </ButtonIcon>
           </div>
         </div>
       </div>
