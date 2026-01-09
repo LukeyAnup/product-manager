@@ -1,4 +1,3 @@
-// components/ui/ImageComponent.tsx
 import React, { useState } from "react";
 
 interface ImageComponentProps

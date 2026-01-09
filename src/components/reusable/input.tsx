@@ -18,6 +18,7 @@ export default function InputComponent({
   return (
     <TextField
       name={name}
+      autoComplete="off"
       label={label}
       placeholder={placeholder}
       variant="outlined"

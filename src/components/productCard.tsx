@@ -9,6 +9,7 @@ import type { Product } from "../types/product";
 import ButtonComponent from "./reusable/button";
 import ButtonIcon from "./reusable/buttonIcon";
 import ImageComponent from "./reusable/image";
+import { getProductDetailRoute } from "../routes/routeHelpers";
 
 //
 interface ProductCardProps {
@@ -22,7 +23,7 @@ export default function ProductCard({ products }: ProductCardProps) {
   const [favourites, setFavourites] = useState<number[]>(() => getFavourites());
 
   function openProductPage(productId: number) {
-    navigate(`/products/${productId}`);
+    navigate(getProductDetailRoute(productId));
   }
 
   const toggleFavourite = (id: number) => {

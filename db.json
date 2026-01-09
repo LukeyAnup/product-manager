@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": "b662",
+      "username": "anup.subedi@kotuko.it",
+      "password": "Password@123"
+    },
+    {
+      "id": "c050",
+      "username": "Lukey",
+      "password": "Password@123"
+    },
+    {
+      "id": "c4fd",
+      "username": "LukeyAnup",
+      "password": "$2b$10$7WYcvNgFXU.gATymsnEZ4.wB8pqPzcCrjhu4wIthMrVnrJmQhsPd6"
+    },
+    {
+      "id": "5611",
+      "username": "Anup",
+      "password": "Password@123"
+    },
+    {
+      "id": "4106",
+      "username": "AnupLukey",
+      "password": "Password@123"
+    },
+    {
+      "id": "1f58",
+      "username": "anupsubedi@kotuko.it",
+      "password": "Password@123"
+    },
+    {
+      "id": "b976",
+      "username": "Gange",
+      "password": "Password"
+    },
+    {
+      "id": "5578",
+      "username": "GangeManish",
+      "password": "Password"
+    },
+    {
+      "id": "bf1c",
+      "username": "Newuser",
+      "password": "Password"
+    },
+    {
+      "id": "a1b1",
+      "username": "Luci",
+      "password": "Password"
+    },
+    {
+      "id": "b366",
+      "username": "TestUser",
+      "password": "Password"
+    },
+    {
+      "id": "6b8b",
+      "username": "Lukey1",
+      "password": "aaaaaa"
+    }
+  ]
+}

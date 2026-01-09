@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { fetchProductById } from "../api/products";
 import { useNavigate, useParams } from "react-router-dom";
-import type { Product } from "../types/product";
 
 //
 import Loader from "../components/loader";
 import ProductImages from "../components/productImages";
-import { BiLeftArrow } from "react-icons/bi";
+import ErrorComponent from "../components/reusable/error";
 import ButtonComponent from "../components/reusable/button";
+
+import { ROUTES } from "../routes/routes";
+import { BiLeftArrow } from "react-icons/bi";
+import type { Product } from "../types/product";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -18,7 +21,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
 
   function goToProductsPage() {
-    navigate("/products");
+    navigate(ROUTES.PRODUCTS);
   }
 
   useEffect(() => {
@@ -45,27 +48,15 @@ export default function ProductDetailPage() {
     loadProduct();
   }, [id]);
 
-  if (loading)
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
+  if (loading) return <Loader />;
 
   if (error || !product) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] px-4">
-        <div className="text-center max-w-md">
-          <p className="text-red-600 text-xl mb-6">
-            {error || "Product not found"}
-          </p>
-          <ButtonComponent
-            onClick={() => goToProductsPage()}
-            size="large"
-            text="Back to Products"
-          />
-        </div>
-      </div>
+      <ErrorComponent
+        message={error ?? "Unknown error"}
+        onRetry={() => goToProductsPage()}
+        retryText="Back to products"
+      />
     );
   }
 

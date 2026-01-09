@@ -19,7 +19,6 @@ export default function ProductImages({ images }: Props) {
   if (!images || images.length === 0 || !mainImage) return null;
 
   const remainingImages = images.filter((img) => img !== mainImage);
-  console.log(remainingImages, "sdjdsh");
 
   return (
     <div>

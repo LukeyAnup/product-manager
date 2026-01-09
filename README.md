@@ -30,7 +30,7 @@ A simple product listing application built with **React** that fetches products 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/LukeyAnup/product-manager.git
 ```
 
 Navigate to the project folder
@@ -47,3 +47,6 @@ npm run dev
 
 Run tests
 npx cypress open
+
+run json server
+json-server --watch db.json --port 4000

@@ -1,0 +1,17 @@
+{
+  "title": "Esplora Prodotti",
+  "navLinks": {
+    "home": "Home",
+    "products": "Prodotti"
+  },
+  "home": {
+    "underConstruction": "Home page in fase di costruzione"
+  },
+  "products": {
+    "productFilter": "Filtri prodotto",
+    "priceRange": "Fascia di prezzo",
+    "rating": "Valutazione",
+    "reset": "Reset"
+  },
+  "productDetails": {}
+}

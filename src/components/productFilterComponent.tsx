@@ -4,8 +4,11 @@ import { IoIosSettings, IoMdClose } from "react-icons/io";
 import { usePriceFilterStore } from "../store";
 import ButtonComponent from "./reusable/button";
 import InputComponent from "./reusable/input";
+import { useTranslation } from "react-i18next";
 
 export default function ProductFilterComponent() {
+  const { t } = useTranslation();
+
   const {
     minPrice,
     maxPrice,
@@ -26,16 +29,16 @@ export default function ProductFilterComponent() {
           <ButtonComponent
             onClick={resetPrices}
             variant="text"
-            text="Reset"
+            text={t("products.reset")}
             sx={{
               cursor: "pointer",
             }}
           />
         </div>
 
-        <div className="text-2xl">Product Filters</div>
+        <div className="text-2xl">{t("products.productFilter")}</div>
         <div>
-          <h3 className="font-semibold mb-2">Price Range</h3>
+          <h3 className="font-semibold mb-2">{t("products.priceRange")}</h3>
           <div className="flex gap-2">
             <InputComponent
               name="minimum"
@@ -80,7 +83,7 @@ export default function ProductFilterComponent() {
         </div>
 
         <div>
-          <h3 className="font-semibold mb-2">Rating</h3>
+          <h3 className="font-semibold mb-2">{t("products.rating")}</h3>
           <Rating
             value={rating ?? null}
             onChange={(_, newValue) => setRating(newValue ?? undefined)}
@@ -104,7 +107,9 @@ export default function ProductFilterComponent() {
         >
           <div className="p-4">
             <div className="flex justify-between">
-              <h2 className="font-bold text-lg">Product filters</h2>
+              <h2 className="font-bold text-lg">
+                {t("products.productFilter")}
+              </h2>
               <div onClick={toggleDrawer}>
                 <IoMdClose />
               </div>
@@ -114,7 +119,7 @@ export default function ProductFilterComponent() {
               <ButtonComponent
                 onClick={resetPrices}
                 variant="text"
-                text="Reset"
+                text={t("products.reset")}
                 sx={{
                   cursor: "pointer",
                 }}
@@ -122,7 +127,9 @@ export default function ProductFilterComponent() {
             </div>
             <div className="flex flex-col gap-4 mt-2">
               <div>
-                <h3 className="font-semibold mb-2">Price Range</h3>
+                <h3 className="font-semibold mb-2">
+                  {t("products.priceRange")}
+                </h3>
                 <div className="flex gap-2">
                   <InputComponent
                     name="minimum"
@@ -165,7 +172,7 @@ export default function ProductFilterComponent() {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-2">Rating</h3>
+                <h3 className="font-semibold mb-2">{t("products.rating")}</h3>
                 <Rating
                   value={rating ?? null}
                   onChange={(_, newValue) => setRating(newValue ?? undefined)}

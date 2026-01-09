@@ -5,10 +5,11 @@ import type { Product } from "../types/product";
 
 import Loader from "../components/loader";
 import SearchBar from "../components/searchBar";
-import ProductCard from "../components/productCard";
-import ProductFilterComponent from "../components/productFilterComponent";
 import Pagination from "../components/pagination";
-import ButtonComponent from "../components/reusable/button";
+import ProductCard from "../components/productCard";
+import { filterProducts } from "../utils/filterProducts";
+import ErrorComponent from "../components/reusable/error";
+import ProductFilterComponent from "../components/productFilterComponent";
 
 export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
@@ -36,23 +37,11 @@ export default function ProductsPage() {
     loadProducts();
   }, []);
 
-  const filteredProducts = products.filter((product) => {
-    const searchQueryResult = product.title
-      .toLowerCase()
-      .includes(query.toLowerCase());
-
-    const minPriceResult =
-      minPrice !== "" ? Number(product.price) >= Number(minPrice) : true;
-
-    const maxPriceResult =
-      maxPrice !== "" ? Number(product.price) <= Number(maxPrice) : true;
-
-    const ratingResult =
-      rating !== undefined ? Number(product.rating) >= rating : true;
-
-    return (
-      searchQueryResult && minPriceResult && maxPriceResult && ratingResult
-    );
+  const filteredProducts = filterProducts(products, {
+    query,
+    minPrice,
+    maxPrice,
+    rating,
   });
 
   const startIndex = (page - 1) * limit;
@@ -70,26 +59,14 @@ export default function ProductsPage() {
     if (page < totalPages) setPage(page + 1);
   };
 
-  if (loading)
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
+  if (loading) return <Loader />;
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="text-center">
-          <div className="flex my-4">
-            <p className="text-red-600 text-lg mb-4">{error}</p>
-          </div>
-          <ButtonComponent
-            onClick={() => window.location.reload()}
-            text="Retry"
-          />
-        </div>
-      </div>
+      <ErrorComponent
+        message={error ?? "Unknown error"}
+        onRetry={() => window.location.reload()}
+      />
     );
   }
 

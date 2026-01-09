@@ -1,0 +1,17 @@
+{
+  "title": "Product Explorer",
+  "navLinks": {
+    "home": "Home",
+    "products": "Products"
+  },
+  "home": {
+    "underConstruction": "Home page under construction"
+  },
+  "products": {
+    "productFilter": "Product Filters",
+    "priceRange": "Price Range",
+    "rating": "Rating",
+    "reset": "Reset"
+  },
+  "productDetails": {}
+}
