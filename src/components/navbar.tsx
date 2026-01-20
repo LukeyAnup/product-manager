@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { IoIosMenu } from "react-icons/io";
-import { RxCross1 } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
-import ButtonIcon from "./reusable/buttonIcon";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { logoutApi } from "../api/auth";
 import { ROUTES } from "../routes/routes";
+import { RxCross1 } from "react-icons/rx";
+import { IoIosMenu } from "react-icons/io";
+import ButtonIcon from "./reusable/buttonIcon";
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./ui/languageSelect";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { logout } from "../api/auth";
-import { toast } from "react-toastify";
+import { useAuth } from "../context/authContext";
 
 export default function Navbar() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -22,15 +23,14 @@ export default function Navbar() {
   const navLinks = [
     { name: t("navLinks.home"), path: ROUTES.HOME },
     { name: t("navLinks.products"), path: ROUTES.PRODUCTS },
+    { name: t("navLinks.cart"), path: ROUTES.CART },
+    { name: t("navLinks.checkoutHistory"), path: ROUTES.CHECKOUT_HISTORY },
   ];
 
   const handleLogout = () => {
-    const result = logout();
-    toast.success("Successfully logged out");
-
-    if (result.success) {
-      navigate("/login");
-    }
+    logoutApi();
+    logout();
+    toast.success(t("navbar.logoutSuccess"));
   };
 
   return (

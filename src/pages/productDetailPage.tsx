@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { fetchProductById } from "../api/products";
 import { useNavigate, useParams } from "react-router-dom";
 
-//
 import Loader from "../components/loader";
 import ProductImages from "../components/productImages";
 import ErrorComponent from "../components/reusable/error";
@@ -11,8 +10,10 @@ import ButtonComponent from "../components/reusable/button";
 import { ROUTES } from "../routes/routes";
 import { BiLeftArrow } from "react-icons/bi";
 import type { Product } from "../types/product";
+import { useTranslation } from "react-i18next";
 
 export default function ProductDetailPage() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     if (!id) {
-      setError("Invalid product ID");
+      setError(t("productDetails.invalidId"));
       setLoading(false);
       return;
     }
@@ -38,7 +39,7 @@ export default function ProductDetailPage() {
         const data = await fetchProductById(Number(id));
         setProduct(data);
       } catch (err) {
-        setError("Failed to load product. Please try again.");
+        setError(t("productDetails.loadFailed"));
         console.error("Error fetching product:", err);
       } finally {
         setLoading(false);
@@ -46,16 +47,16 @@ export default function ProductDetailPage() {
     };
 
     loadProduct();
-  }, [id]);
+  }, [id, t]);
 
   if (loading) return <Loader />;
 
   if (error || !product) {
     return (
       <ErrorComponent
-        message={error ?? "Unknown error"}
+        message={error ?? t("productDetails.unknownError")}
         onRetry={() => goToProductsPage()}
-        retryText="Back to products"
+        retryText={t("productDetails.backToProducts")}
       />
     );
   }
@@ -67,7 +68,7 @@ export default function ProductDetailPage() {
         <ButtonComponent
           onClick={() => goToProductsPage()}
           variant="text"
-          text="Back to Products"
+          text={t("productDetails.backToProducts")}
         />
       </div>
 
@@ -75,33 +76,53 @@ export default function ProductDetailPage() {
         <div>
           <ProductImages images={product?.images} />
         </div>
+
         <div className="px-3 md:px-0">
           <div className="flex flex-col gap-4 pt-10">
             <div className="text-2xl font-bold">{product?.title}</div>
+
             <div className="flex gap-20 font-semibold">
-              <p>${product?.price} </p>
-              <p>-%{product?.discountPercentage}</p>
+              <p>
+                {t("productDetails.price")} ${product?.price}
+              </p>
+              <p>
+                -%{product?.discountPercentage} {t("productDetails.discount")}
+              </p>
             </div>
+
             <p className="text-lg">
-              <span className="font-bold">Description: </span>
+              <span className="font-bold">
+                {t("productDetails.description")}:
+              </span>{" "}
               {product?.description}
             </p>
+
             <span>
-              <span className="font-bold">Minimum order quantity: </span>
+              <span className="font-bold">{t("productDetails.minOrder")}:</span>{" "}
               {product?.minimumOrderQuantity}
             </span>
+
             <p>
-              <span className="font-bold">Return policy: </span>
+              <span className="font-bold">
+                {t("productDetails.returnPolicy")}:
+              </span>{" "}
               {product?.returnPolicy}
             </p>
+
             <p>
-              <span className="font-bold">Availability status: </span>
+              <span className="font-bold">
+                {t("productDetails.availability")}:
+              </span>{" "}
               {product?.availabilityStatus}
             </p>
+
             <p>
-              <span className="font-bold">Shipping information: </span>
+              <span className="font-bold">
+                {t("productDetails.shippingInfo")}:
+              </span>{" "}
               {product?.shippingInformation}
             </p>
+
             <p>{product?.warrentyInformation}</p>
           </div>
         </div>

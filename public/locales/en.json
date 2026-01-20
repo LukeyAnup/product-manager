@@ -2,7 +2,12 @@
   "title": "Product Explorer",
   "navLinks": {
     "home": "Home",
-    "products": "Products"
+    "products": "Products",
+    "cart": "Cart",
+    "checkoutHistory": "Checkout history"
+  },
+  "navbar": {
+    "logoutSuccess": "Successfully logged out"
   },
   "home": {
     "underConstruction": "Home page under construction"
@@ -11,7 +16,68 @@
     "productFilter": "Product Filters",
     "priceRange": "Price Range",
     "rating": "Rating",
-    "reset": "Reset"
+    "reset": "Reset",
+    "noFilterResult": "There are no products matching this filter",
+    "btnLearnMore": "Learn more",
+    "favourites": {
+      "added": "Added to favourites",
+      "removed": "Removed from favourites"
+    },
+    "cart": {
+      "added": "Product successfully added to cart",
+      "removed": "Product removed from cart",
+      "alreadyInCart": "Already in cart",
+      "adding": "Adding...",
+      "AddTo": "Add to cart",
+      "loginToViewCart": "Please login to view your cart",
+      "emptyCart": "Your cart is empty",
+      "addProductToCart": "Add some products to get started",
+      "shoppingCart": "Shopping Cart",
+      "subTotal": "Subtotal: $",
+      "orderSummary": "Order Summary",
+      "items": "Items",
+      "shipping": "Shipping",
+      "total": "Total",
+      "free": "Free"
+    }
   },
-  "productDetails": {}
+  "productDetails": {
+    "invalidId": "Invalid product ID",
+    "loadFailed": "Failed to load product. Please try again.",
+    "unknownError": "Unknown error",
+    "backToProducts": "Back to Products",
+    "price": "Price",
+    "discount": "Discount",
+    "description": "Description",
+    "minOrder": "Minimum order quantity",
+    "returnPolicy": "Return policy",
+    "availability": "Availability status",
+    "shippingInfo": "Shipping information"
+  },
+  "login": {
+    "title": "Login",
+    "success": "Login successful",
+    "username": "Username",
+    "password": "Password",
+    "noAccount": "Don't have an account yet?",
+    "registerHere": "Register here"
+  },
+  "pagination": {
+    "page": "Page",
+    "prev": "Prev",
+    "next": "Next",
+    "of": "of"
+  },
+  "checkoutHistory": {
+    "title": "Order History ({{count}} orders)",
+    "totalSpent": "Total Spent:",
+    "loginToView": "Please login to view your orders",
+    "noOrders": "No orders yet",
+    "noOrdersDesc": "Your order history will appear here",
+    "orderedOn": "Ordered on",
+    "quantity": "Quantity",
+    "total": "Total",
+    "error": "Failed to load checkout history",
+    "toastError": "Failed to load checkout history"
+  }
 }

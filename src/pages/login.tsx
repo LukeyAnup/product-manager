@@ -10,11 +10,16 @@ import type { LoginFormData } from "../validations/loginSchema";
 
 import InputComponent from "../components/reusable/input";
 import ButtonComponent from "../components/reusable/button";
+import { useAuth } from "../context/authContext";
+import Loader from "../components/loader";
+import { useTranslation } from "react-i18next";
 
 /**
  *
  */
 export default function LoginPage() {
+  const { loading, login: loginContext } = useAuth();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -30,29 +35,39 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setError("");
 
-    const result = await login<IUser[]>(data.username, data.password);
-    if (!result.status) {
+    const result = await login<IUser>(data.username, data.password);
+    if (!result.status || !result.data) {
       setError(result.message || "Unknown Error");
       return;
     }
+    loginContext(result.data);
+    localStorage.setItem("loggedInUser", result?.data?.username ?? "");
+    toast.success(t("login.success"));
 
-    toast.success("Login successful.");
-    localStorage.setItem("loggedInUser", result?.data?.[0].username ?? "");
+    const redirectUrl = localStorage.getItem("redirectAfterLogin");
+
     setTimeout(() => {
-      navigate(ROUTES.HOME, { replace: true });
+      if (redirectUrl) {
+        localStorage.removeItem("redirectAfterLogin");
+        navigate(redirectUrl, { replace: true });
+      } else {
+        navigate(ROUTES.HOME, { replace: true });
+      }
     }, 1000);
   };
 
+  if (loading) return <Loader />;
+
   return (
     <div className="max-w-sm mx-auto mt-10 border border-gray-400 p-12 rounded-xl">
-      <h1 className="text-xl font-bold mb-4">Login</h1>
+      <h1 className="text-xl font-bold mb-4">{t("login.title")}</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <div className="flex flex-col gap-2">
           <InputComponent
-            label="Username"
+            label={t("login.username")}
             {...register("username")}
-            placeholder="Username"
+            placeholder={t("login.username")}
             sx={{
               marginTop: 0,
               marginBottom: 0,
@@ -63,10 +78,10 @@ export default function LoginPage() {
           )}
 
           <InputComponent
-            label="Password"
+            label={t("login.password")}
             {...register("password")}
             type="password"
-            placeholder="Password"
+            placeholder={t("login.password")}
             autoComplete="new-password"
           />
           {errors.password && (
@@ -77,9 +92,9 @@ export default function LoginPage() {
           <ButtonComponent disabled={isSubmitting} type="submit" text="Login" />
 
           <div>
-            <span>Don't have an account yet? </span>
+            <span>{t("login.noAccount")} </span>
             <Link to={ROUTES.REGISTER} className="text-blue-600">
-              Register here
+              {t("login.registerHere")}
             </Link>
           </div>
         </div>

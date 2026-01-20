@@ -20,6 +20,8 @@ interface PriceFilterState {
   setRating: (value?: number) => void;
 
   resetPrices: () => void;
+
+  loadFromURL: (params: URLSearchParams) => void;
 }
 
 export const usePriceFilterStore = create<PriceFilterState>((set) => ({
@@ -42,4 +44,16 @@ export const usePriceFilterStore = create<PriceFilterState>((set) => ({
 
   resetPrices: () =>
     set({ query: "", minPrice: "", maxPrice: "", rating: undefined, page: 1 }),
+
+  loadFromURL: (params) => {
+    const query = params.get("search") || "";
+    const minPrice = params.get("minPrice") || "";
+    const maxPrice = params.get("maxPrice") || "";
+    const rating = params.get("rating")
+      ? parseFloat(params.get("rating")!)
+      : undefined;
+    const page = params.get("page") ? parseInt(params.get("page")!) : 1;
+
+    set({ query, minPrice, maxPrice, rating, page });
+  },
 }));

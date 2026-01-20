@@ -1,64 +1,84 @@
 {
   "users": [
     {
-      "id": "b662",
-      "username": "anup.subedi@kotuko.it",
-      "password": "Password@123"
-    },
-    {
       "id": "c050",
       "username": "Lukey",
-      "password": "Password@123"
+      "password": "Password@123",
+      "cart": [
+        {
+          "id": 1768732132604,
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "id": 1768732605873,
+          "productId": 6,
+          "quantity": 1
+        },
+        {
+          "id": 1768732607022,
+          "productId": 5,
+          "quantity": 1
+        },
+        {
+          "id": 1768732608267,
+          "productId": 7,
+          "quantity": 1
+        },
+        {
+          "id": 1768823414374,
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "orders": [
+        {
+          "id": 1768371374171.1396,
+          "productId": 1,
+          "quantity": 2,
+          "checkedOutAt": "2026-01-14T06:16:14.171Z"
+        },
+        {
+          "id": 1768371374171.1113,
+          "productId": 2,
+          "quantity": 1,
+          "checkedOutAt": "2026-01-14T06:16:14.171Z"
+        },
+        {
+          "id": 1768371374171.3354,
+          "productId": 3,
+          "quantity": 1,
+          "checkedOutAt": "2026-01-14T06:16:14.172Z"
+        }
+      ],
+      "favourites": [
+        {
+          "id": 1768732129607,
+          "productId": 1,
+          "addedAt": "2026-01-18T10:28:49.607Z"
+        }
+      ]
     },
     {
-      "id": "c4fd",
-      "username": "LukeyAnup",
-      "password": "$2b$10$7WYcvNgFXU.gATymsnEZ4.wB8pqPzcCrjhu4wIthMrVnrJmQhsPd6"
-    },
-    {
-      "id": "5611",
+      "id": "446c",
       "username": "Anup",
-      "password": "Password@123"
-    },
-    {
-      "id": "4106",
-      "username": "AnupLukey",
-      "password": "Password@123"
-    },
-    {
-      "id": "1f58",
-      "username": "anupsubedi@kotuko.it",
-      "password": "Password@123"
-    },
-    {
-      "id": "b976",
-      "username": "Gange",
-      "password": "Password"
-    },
-    {
-      "id": "5578",
-      "username": "GangeManish",
-      "password": "Password"
-    },
-    {
-      "id": "bf1c",
-      "username": "Newuser",
-      "password": "Password"
-    },
-    {
-      "id": "a1b1",
-      "username": "Luci",
-      "password": "Password"
-    },
-    {
-      "id": "b366",
-      "username": "TestUser",
-      "password": "Password"
-    },
-    {
-      "id": "6b8b",
-      "username": "Lukey1",
-      "password": "aaaaaa"
+      "password": "password",
+      "cart": [],
+      "favourites": [],
+      "orders": [
+        {
+          "id": 1768370040270.0278,
+          "productId": 2,
+          "quantity": 2,
+          "checkedOutAt": "2026-01-14T05:54:28.880Z"
+        },
+        {
+          "id": 1768370040270.5405,
+          "productId": 3,
+          "quantity": 2,
+          "checkedOutAt": "2026-01-14T05:54:28.881Z"
+        }
+      ]
     }
   ]
 }

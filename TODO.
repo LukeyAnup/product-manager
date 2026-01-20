@@ -1,0 +1,10 @@
+2026-01-12
+1. Create cart/favorites based on loggedIn user
+2. When checkout is done, remove cart item of particular user only
+3. On loggin please keep a session time to 1 min after 1 min the user should be automatically loggedout.
+
+BUg:
+1. Translation not addressed in whole application
+2. Filter state changes when we refresh the page. Also if the loggedin session is expired.
+
+// local storage - store everything using zustand store - play with state - [store skill]

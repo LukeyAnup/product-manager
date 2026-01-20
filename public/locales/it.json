@@ -2,7 +2,12 @@
   "title": "Esplora Prodotti",
   "navLinks": {
     "home": "Home",
-    "products": "Prodotti"
+    "products": "Prodotti",
+    "cart": "Carrello",
+    "checkoutHistory": "Cronologia acquisti"
+  },
+  "navbar": {
+    "logoutSuccess": "Logout effettuato con successo"
   },
   "home": {
     "underConstruction": "Home page in fase di costruzione"
@@ -11,7 +16,68 @@
     "productFilter": "Filtri prodotto",
     "priceRange": "Fascia di prezzo",
     "rating": "Valutazione",
-    "reset": "Reset"
+    "reset": "Reimposta",
+    "noFilterResult": "Non ci sono prodotti che corrispondono a questo filtro",
+    "btnLearnMore": "Scopri di più",
+    "favourites": {
+      "added": "Aggiunto ai preferiti",
+      "removed": "Rimosso dai preferiti"
+    },
+    "cart": {
+      "added": "Prodotto aggiunto al carrello con successo",
+      "removed": "Prodotto rimosso dal carrello",
+      "alreadyInCart": "Già nel carrello",
+      "adding": "Aggiunta in corso...",
+      "AddTo": "Aggiungi al carrello",
+      "loginToViewCart": "Effettua il login per visualizzare il carrello",
+      "emptyCart": "Il tuo carrello è vuoto",
+      "addProductToCart": "Aggiungi alcuni prodotti per iniziare",
+      "shoppingCart": "Carrello",
+      "subTotal": "Subtotale: $",
+      "orderSummary": "Riepilogo ordine",
+      "items": "Articoli",
+      "shipping": "Spedizione",
+      "total": "Totale",
+      "free": "Gratuito"
+    }
   },
-  "productDetails": {}
+  "productDetails": {
+    "invalidId": "ID prodotto non valido",
+    "loadFailed": "Impossibile caricare il prodotto. Riprova.",
+    "unknownError": "Errore sconosciuto",
+    "backToProducts": "Torna ai prodotti",
+    "price": "Prezzo",
+    "discount": "Sconto",
+    "description": "Descrizione",
+    "minOrder": "Quantità minima d'ordine",
+    "returnPolicy": "Politica di reso",
+    "availability": "Stato disponibilità",
+    "shippingInfo": "Informazioni sulla spedizione"
+  },
+  "login": {
+    "title": "Accesso",
+    "success": "Accesso effettuato con successo",
+    "username": "Nome utente",
+    "password": "Password",
+    "noAccount": "Non hai ancora un account?",
+    "registerHere": "Registrati qui"
+  },
+  "pagination": {
+    "page": "Pagina",
+    "prev": "Precedente",
+    "next": "Successiva",
+    "of": "di"
+  },
+  "checkoutHistory": {
+    "title": "Cronologia ordini ({{count}} ordini)",
+    "totalSpent": "Totale speso:",
+    "loginToView": "Effettua il login per vedere i tuoi ordini",
+    "noOrders": "Nessun ordine ancora",
+    "noOrdersDesc": "La cronologia dei tuoi ordini apparirà qui",
+    "orderedOn": "Ordinato il",
+    "quantity": "Quantità",
+    "total": "Totale",
+    "error": "Impossibile caricare la cronologia ordini",
+    "toastError": "Impossibile caricare la cronologia ordini"
+  }
 }

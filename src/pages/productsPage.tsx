@@ -10,14 +10,40 @@ import ProductCard from "../components/productCard";
 import { filterProducts } from "../utils/filterProducts";
 import ErrorComponent from "../components/reusable/error";
 import ProductFilterComponent from "../components/productFilterComponent";
+import { useSearchParams } from "react-router-dom";
 
 export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const { query, minPrice, maxPrice, rating, page, limit, setPage } =
-    usePriceFilterStore();
+  const {
+    query,
+    minPrice,
+    maxPrice,
+    rating,
+    page,
+    limit,
+    setPage,
+    loadFromURL,
+  } = usePriceFilterStore();
+
+  useEffect(() => {
+    loadFromURL(searchParams);
+  }, [loadFromURL, searchParams]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (query) params.set("search", query);
+    if (minPrice) params.set("minPrice", minPrice);
+    if (maxPrice) params.set("maxPrice", maxPrice);
+    if (rating) params.set("rating", rating.toString());
+    if (page > 1) params.set("page", page.toString());
+
+    setSearchParams(params, { replace: true });
+  }, [query, minPrice, maxPrice, rating, page, setSearchParams]);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -47,7 +73,7 @@ export default function ProductsPage() {
   const startIndex = (page - 1) * limit;
   const paginatedProducts = filteredProducts.slice(
     startIndex,
-    startIndex + limit
+    startIndex + limit,
   );
   const totalPages = Math.ceil(filteredProducts.length / limit);
 
@@ -78,6 +104,16 @@ export default function ProductsPage() {
 
       <div className="md:flex-1">
         <SearchBar />
+        {(query || minPrice || maxPrice || rating) && (
+          <div className="px-6 py-2 text-sm text-gray-600">
+            Showing {filteredProducts.length} result
+            {filteredProducts.length !== 1 ? "s" : ""}
+            {query && ` for "${query}"`}
+            {(minPrice || maxPrice) &&
+              ` • Price: ${minPrice || "0"} - ${maxPrice || "∞"}`}
+            {rating && ` • Rating: ${rating}+ stars`}
+          </div>
+        )}
         <ProductCard products={paginatedProducts} />
 
         <Pagination
